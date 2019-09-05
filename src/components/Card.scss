@@ -1,0 +1,15 @@
+@import "../styles/colors.scss";
+
+@mixin cardPosition($left: 0, $right: 0) {
+   position: absolute;
+   left: $left;
+   right: $right;
+   margin: {
+      left: auto;
+      right: auto;
+   }
+}
+.Card {
+   @include cardPosition(0, 0);
+   width: 100px;
+}

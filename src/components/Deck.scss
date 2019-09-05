@@ -1,0 +1,44 @@
+@import "../styles/colors.scss";
+$margin-top: 80px;
+
+.Deck-title {
+   font: {
+      family: "Helvetica, Sans Serif";
+      weight: 700;
+      size: 50px;
+   }
+}
+
+.Deck-generate {
+   display: inline-block;
+   padding: 0.3em 1.2em;
+   margin: 0 0.3em 0.3em 0;
+   border-radius: 2em;
+   outline: none;
+   font: {
+      family: "Roboto", sans-serif;
+      weight: 300;
+      size: 20px;
+   }
+   color: #ffffff;
+   background-color: $primaryButton;
+   text-align: center;
+   transition: all 0.2s;
+}
+
+.Deck-generate:hover {
+   color: $primaryButton;
+   background-color: #ffffff;
+}
+
+.Deck-reset {
+   @extend .Deck-generate;
+   flex: right;
+   color: $primaryButton;
+   background-color: #ffffff;
+   border-color: $primaryButton;
+}
+
+.Deck-area {
+   margin-top: $margin-top;
+}

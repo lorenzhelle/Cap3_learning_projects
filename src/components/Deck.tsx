@@ -32,7 +32,7 @@ export default class Deck extends React.Component<DeckProps, State> {
    constructor(props: DeckProps) {
       super(props);
       this.state = {
-         deckID: "",
+         deckID: "zhz7zhhz",
          drawnCards: []
       };
    }

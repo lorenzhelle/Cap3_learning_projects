@@ -6,13 +6,18 @@ export interface Props {
    readonly name: string;
 }
 
+interface TransformPos {
+   x: string;
+   y: string;
+}
+
 export default class Card extends React.Component<Props> {
    transform: string;
 
    constructor(props: Props) {
       super(props);
       let angle: number = Math.floor(Math.random() * 35);
-      let transformPos: { x: string; y: string } = {
+      let transformPos: TransformPos = {
          x: `${Math.floor(Math.random() * 15)}px`,
          y: `${Math.floor(Math.random() * 15)}px`
       };

@@ -1,7 +1,7 @@
 @import "../styles/colors.scss";
 $margin-top: 80px;
 
-.Deck-title {
+.deck-title {
    font: {
       family: "Helvetica, Sans Serif";
       weight: 700;
@@ -9,7 +9,7 @@ $margin-top: 80px;
    }
 }
 
-.Deck-generate {
+.deck-generate {
    display: inline-block;
    padding: 0.3em 1.2em;
    margin: 0 0.3em 0.3em 0;
@@ -26,19 +26,19 @@ $margin-top: 80px;
    transition: all 0.2s;
 }
 
-.Deck-generate:hover {
+.deck-generate:hover {
    color: $primaryButton;
    background-color: #ffffff;
 }
 
-.Deck-reset {
-   @extend .Deck-generate;
+.deck-reset {
+   @extend .deck-generate;
    flex: right;
    color: $primaryButton;
    background-color: #ffffff;
    border-color: $primaryButton;
 }
 
-.Deck-area {
+.deck-area {
    margin-top: $margin-top;
 }

@@ -10,9 +10,10 @@ export interface DeckProps {
 interface State {
    deckID: string;
    drawnCards: Array<Card>;
+   error: boolean;
 }
 
-interface deckApi {
+interface DeckApiResult {
    shuffled: boolean;
    success: boolean;
    deck_id: string;
@@ -33,14 +34,15 @@ export default class Deck extends React.Component<DeckProps, State> {
       super(props);
       this.state = {
          deckID: "zhz7zhhz",
-         drawnCards: []
+         drawnCards: [],
+         error: false
       };
    }
    async componentDidMount(): Promise<void> {
-      let drawnDeck = await axios.get(
+      const drawnDeck = await axios.get(
          `${API_BASE_URL}new/shuffle/?deck_count=1`
       );
-      let data: deckApi = drawnDeck.data;
+      let data: DeckApiResult = drawnDeck.data;
       this.setState({ deckID: data.deck_id });
    }
 
@@ -54,10 +56,14 @@ export default class Deck extends React.Component<DeckProps, State> {
          }
          let drawnCard: Card = cardResponse.data.cards[0];
          this.setState(st => ({
-            drawnCards: [...st.drawnCards, drawnCard]
+            drawnCards: [...st.drawnCards, drawnCard],
+            error: false
          }));
       } catch (err) {
-         alert(err);
+         console.log(err);
+         this.setState({
+            error: true
+         });
       }
    };
 
@@ -70,16 +76,19 @@ export default class Deck extends React.Component<DeckProps, State> {
    public render() {
       return (
          <div>
-            <h1 className="Deck-title">{this.props.title}</h1>
-            <button className="Deck-generate" onClick={this.getCard}>
+            <h1 className="deck-title">{this.props.title}</h1>
+            <button className="deck-generate" onClick={this.getCard}>
                Generate Card
             </button>
             {this.state.drawnCards.length > 0 && (
-               <button className="Deck-reset" onClick={this.handleReset}>
+               <button className="deck-reset" onClick={this.handleReset}>
                   Reset Deck
                </button>
             )}
-            <div className="Deck-area">
+            {this.state.error && (
+               <h2>Error, Karte konnte nicht gezogen werden</h2>
+            )}
+            <div className="deck-area">
                {this.state.drawnCards.map(card => (
                   <CardComp
                      key={card.code}
